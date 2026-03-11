@@ -4,5 +4,8 @@ data/build/
 data/*.tex
 data/cv
 
+# Build artifacts
+bin/
+
 # OS/editor files
 .DS_Store
