@@ -1,0 +1,188 @@
+@font-face {
+  font-family: "Berkeley Mono";
+  src: url("/static/fonts/BerkeleyMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Berkeley Mono";
+  src: url("/static/fonts/BerkeleyMono-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Berkeley Mono";
+  src: url("/static/fonts/BerkeleyMono-Oblique.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Berkeley Mono";
+  src: url("/static/fonts/BerkeleyMono-Bold-Oblique.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --bg-a: #f4efe6;
+  --bg-b: #e8f1f7;
+  --ink: #1f2933;
+  --muted: #52606d;
+  --card: #ffffffde;
+  --line: #d8e1e8;
+  --action: #0b6e4f;
+  --action-hover: #08593f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Berkeley Mono", "Source Sans 3", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 10% 5%, #fff 0%, transparent 34%),
+    linear-gradient(140deg, var(--bg-a), var(--bg-b));
+}
+
+.page {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 1.5rem;
+}
+
+.card {
+  width: min(1700px, 100%);
+  padding: 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--card);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 16px 40px -26px #1f2933;
+}
+
+h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.2rem, 2.6vw, 1.8rem);
+}
+
+.hint {
+  margin: 0 0 1rem;
+  color: var(--muted);
+}
+
+fieldset {
+  margin: 0 0 1rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.9rem;
+  background: #ffffffb3;
+}
+
+legend {
+  padding: 0 0.35rem;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.grid {
+  display: grid;
+  gap: 0.5rem 0.75rem;
+}
+
+.grid.two {
+  grid-template-columns: minmax(120px, 180px) 1fr;
+  align-items: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid #bbcad6;
+  border-radius: 10px;
+  padding: 0.7rem;
+  font: inherit;
+  line-height: 1.45;
+  color: var(--ink);
+  background: #fefefe;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #8ecfb7;
+  border-color: #6ca18e;
+}
+
+.actions {
+  margin-top: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 0.56rem 0.95rem;
+  background: var(--action);
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+#pdf-link {
+  color: #134e9b;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+#pdf-link:hover {
+  text-decoration: underline;
+}
+
+button:hover {
+  background: var(--action-hover);
+}
+
+button:disabled {
+  opacity: 0.72;
+  cursor: wait;
+}
+
+#status {
+  color: var(--muted);
+  min-height: 1.2em;
+}
+
+@media (max-width: 620px) {
+  .card {
+    padding: 1rem;
+  }
+
+  .grid.two {
+    grid-template-columns: 1fr;
+  }
+}

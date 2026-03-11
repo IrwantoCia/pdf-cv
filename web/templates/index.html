@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CV Draft</title>
+    <link rel="stylesheet" href="/static/app.css">
+  </head>
+  <body>
+    <main class="page">
+      <section class="card">
+        <h1>CV Builder</h1>
+        <form id="cv-form" novalidate>
+          <p class="hint">Fill fields below, then generate PDF from your LaTeX template.</p>
+
+          <fieldset>
+            <legend>Basics</legend>
+            <div class="grid two">
+              <label for="name">name</label>
+              <input id="name" name="name" type="text" required>
+              <label for="phone">phone</label>
+              <input id="phone" name="phone" type="text">
+              <label for="email">email</label>
+              <input id="email" name="email" type="email">
+              <label for="linkedin">linkedin url</label>
+              <input id="linkedin" name="linkedin" type="url">
+              <label for="github">github url</label>
+              <input id="github" name="github" type="url">
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Professional Summary</legend>
+            <label for="summary">one bullet per line</label>
+            <textarea id="summary" name="summary" rows="5"></textarea>
+          </fieldset>
+
+          <fieldset>
+            <legend>Education</legend>
+            <label for="education">one entry per line: School || Location || Degree || Date</label>
+            <textarea id="education" name="education" rows="5"></textarea>
+          </fieldset>
+
+          <fieldset>
+            <legend>Work Experience</legend>
+            <label for="experience">block format: first line Company || Role || Date || Location || Mode, next lines start with "- " for bullets, blank line between blocks</label>
+            <textarea id="experience" name="experience" rows="8"></textarea>
+          </fieldset>
+
+          <fieldset>
+            <legend>Projects</legend>
+            <label for="projects">block format: first line Name || Stack || Date, next lines start with "- " for bullets, blank line between blocks</label>
+            <textarea id="projects" name="projects" rows="8"></textarea>
+          </fieldset>
+
+          <fieldset>
+            <legend>Technical Skills</legend>
+            <label for="skills">one line per group: Group: item1, item2, item3</label>
+            <textarea id="skills" name="skills" rows="5"></textarea>
+          </fieldset>
+
+          <div class="actions">
+            <button type="submit" id="generate-btn">Generate &amp; Download PDF</button>
+            <button type="button" id="export-text-btn">Export as Text</button>
+            <button type="button" id="import-text-btn">Import from Text</button>
+            <input id="import-text-file" type="file" accept=".txt,text/plain" hidden>
+            <span id="status" aria-live="polite"></span>
+          </div>
+        </form>
+      </section>
+    </main>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>

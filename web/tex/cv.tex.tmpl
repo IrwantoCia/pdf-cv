@@ -1,0 +1,145 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+% Attribution notice: see THIRD_PARTY_NOTICES.md in this repository.
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+\begin{center}
+    \textbf{\Huge \scshape {{ latex .Basics.Name }}} \\ \vspace{1pt}
+    \small {{ latex .Basics.Phone }} $|$ \href{mailto:{{ latex .Basics.Email }}}{\underline{ {{ latex .Basics.Email }} }} $|$
+    \href{ {{ latex .Basics.LinkedIn }} }{\underline{ {{ latex .Basics.LinkedIn }} }} $|$
+    \href{ {{ latex .Basics.GitHub }} }{\underline{ {{ latex .Basics.GitHub }} }}
+\end{center}
+
+{{- if .Summary }}
+\section{Professional Summary}
+  \resumeItemListStart
+{{- range .Summary }}
+    \resumeItem{ {{ latex . }} }
+{{- end }}
+  \resumeItemListEnd
+{{- end }}
+
+{{- if .Education }}
+\section{Education}
+  \resumeSubHeadingListStart
+{{- range .Education }}
+    \resumeSubheading
+      { {{ latex .School }} }{ {{ latex .Location }} }
+      { {{ latex .Degree }} }{ {{ latex .Date }} }
+{{- end }}
+  \resumeSubHeadingListEnd
+{{- end }}
+
+{{- if .Experience }}
+\section{Work Experience}
+  \resumeSubHeadingListStart
+{{- range .Experience }}
+    \resumeSubheading
+      { {{ latex .Company }} }{ {{ latex .Role }} $|$ {{ latex .Date }} }
+      { {{ latex .Location }} }{ {{ latex .Mode }} }
+      \resumeItemListStart
+{{- range .Items }}
+        \resumeItem{ {{ latex . }} }
+{{- end }}
+      \resumeItemListEnd
+{{- end }}
+  \resumeSubHeadingListEnd
+{{- end }}
+
+{{- if .Projects }}
+\section{Projects}
+  \resumeSubHeadingListStart
+{{- range .Projects }}
+    \resumeProjectHeading
+        {\textbf{ {{ latex .Name }} } $|$ \emph{ {{ latex .Stack }} }}{ {{ latex .Date }} }
+        \resumeItemListStart
+{{- range .Items }}
+          \resumeItem{ {{ latex . }} }
+{{- end }}
+        \resumeItemListEnd
+{{- end }}
+  \resumeSubHeadingListEnd
+{{- end }}
+
+{{- if .Skills }}
+\section{Technical Skills}
+  \begin{itemize}[leftmargin=0.15in, label={\textbullet}]
+    \small{
+{{- range .Skills }}
+      \item \textbf{ {{ latex .Name }}: }{{- range $idx, $item := .Items }}{{ if $idx }}, {{ end }} {{ latex $item }}{{- end }}
+{{- end }}
+    }
+  \end{itemize}
+{{- end }}
+
+\end{document}

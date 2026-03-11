@@ -1,0 +1,8 @@
+# Runtime and generated data
+data/queue/
+data/build/
+data/*.tex
+data/cv
+
+# OS/editor files
+.DS_Store
